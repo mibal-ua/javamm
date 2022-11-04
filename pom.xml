@@ -138,4 +138,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <site>
+            <id>mibal_ua</id>
+            <url>scp://t.me/mibal_ua</url>
+        </site>
+    </distributionManagement>
 </project>
