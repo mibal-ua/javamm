@@ -23,7 +23,7 @@ import static java.util.Objects.requireNonNull;
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
-public class ConfigException extends RuntimeException {
+public final class ConfigException extends RuntimeException {
 
     public ConfigException(final String message) {
         super(requireNonNull(message));
