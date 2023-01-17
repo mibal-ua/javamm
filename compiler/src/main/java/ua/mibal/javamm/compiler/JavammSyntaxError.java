@@ -23,7 +23,7 @@ import ua.mibal.javamm.code.exception.JavammError;
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
-public class JavammSyntaxError extends JavammError {
+public abstract class JavammSyntaxError extends JavammError {
 
     public JavammSyntaxError(final String message) {
         super(message);
