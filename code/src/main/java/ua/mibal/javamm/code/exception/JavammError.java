@@ -23,7 +23,7 @@ import static java.util.Objects.requireNonNull;
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
-public class JavammError extends RuntimeException {
+public abstract class JavammError extends RuntimeException {
 
     public JavammError(final String message) {
         super(requireNonNull(message), null, false, false);
