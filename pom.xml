@@ -142,7 +142,7 @@
     <distributionManagement>
         <site>
             <id>mibal_ua</id>
-            <url>scp://t.me/mibal_ua</url>
+            <url>https://github.com/mibal-ua/javamm</url>
         </site>
     </distributionManagement>
 </project>
