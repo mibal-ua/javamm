@@ -46,8 +46,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.2</junit.version>
         <mockito.version>5.0.0</mockito.version>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -94,8 +92,9 @@
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.0</version>
+                    <!-- https://winterbe.com/posts/2018/08/29/migrate-maven-projects-to-java-11-jigsaw/ -->
                     <configuration>
-                        <release>18</release>
+                        <release>11</release>
                         <showWarnings>true</showWarnings>
                         <showDeprecation>true</showDeprecation>
                     </configuration>
@@ -143,7 +142,7 @@
                             <!-- https://maven.apache.org/enforcer/enforcer-rules/index.html -->
                             <rules>
                                 <requireJavaVersion>
-                                    <version>18</version>
+                                    <version>11</version>
                                 </requireJavaVersion>
                             </rules>
                             <fail>true</fail>
