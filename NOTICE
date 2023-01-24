@@ -17,11 +17,11 @@ License for the specific language governing permissions and limitations
 under the License.
 
 ------------------------------------------------------------------------------------------------------------------------
-This product requires OpenJDK 18 or later:
+This product requires OpenJDK 11 or later:
 
  * LICENSE:
    * https://openjdk.java.net/legal/gplv2+ce.html (GNU General Public License, version 2, with the Classpath Exception)
  * HOMEPAGE:
-   * https://jdk.java.net/18/
+   * https://jdk.java.net/11/
 
 TODO...
