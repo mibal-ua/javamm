@@ -21,7 +21,7 @@ package ua.mibal.javamm.code.fragment;
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
-public interface Operation {
+public interface Operation extends CompiledCodeFragment {
 
     SourceLine getSourceLine();
 }
