@@ -8,16 +8,17 @@
     <artifactId>javamm</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>code</module>
-        <module>cmd</module>
         <module>compiler</module>
-        <module>ide</module>
         <module>interpreter</module>
         <module>library</module>
+        <module>vm</module>
+        <module>cmd</module>
+        <module>ide</module>
         <module>release</module>
         <module>temp</module>
-        <module>vm</module>
     </modules>
 
     <name>Javamm project</name>
