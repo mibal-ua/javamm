@@ -25,7 +25,7 @@ import static java.util.Objects.requireNonNull;
  */
 public abstract class JavammError extends RuntimeException {
 
-    public JavammError(final String message) {
+    protected JavammError(final String message) {
         super(requireNonNull(message), null, false, false);
     }
 }
