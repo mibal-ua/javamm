@@ -20,7 +20,7 @@
                 <configuration>
                     <argLine>
                         @{argLine}
-                        --add-opens javamm.compiler/academy.devonline.javamm.compiler.component.impl=ALL-UNNAMED
+                        --add-opens javamm.compiler/ua.mibal.javamm.compiler.component.impl=ALL-UNNAMED
                     </argLine>
                 </configuration>
             </plugin>
