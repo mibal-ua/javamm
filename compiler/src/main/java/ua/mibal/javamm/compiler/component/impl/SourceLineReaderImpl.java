@@ -20,6 +20,7 @@ package ua.mibal.javamm.compiler.component.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import static java.util.Objects.requireNonNull;
 import ua.mibal.javamm.code.fragment.SourceCode;
 import ua.mibal.javamm.code.fragment.SourceLine;
 import ua.mibal.javamm.compiler.component.SourceLineReader;
@@ -35,7 +36,7 @@ public class SourceLineReaderImpl implements SourceLineReader {
     private final TokenParser tokenParser;
 
     public SourceLineReaderImpl(final TokenParser tokenParser) {
-        this.tokenParser = tokenParser;
+        this.tokenParser = requireNonNull(tokenParser);
     }
 
     @Override
