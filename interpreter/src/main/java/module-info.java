@@ -4,4 +4,7 @@
  */
 module javamm.interpreter {
     requires javamm.code;
+
+    exports ua.mibal.javamm.interpreter;
+    exports ua.mibal.javamm.interpreter.component;
 }
