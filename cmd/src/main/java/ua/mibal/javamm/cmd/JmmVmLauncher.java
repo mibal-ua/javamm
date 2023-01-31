@@ -17,35 +17,27 @@
 
 package ua.mibal.javamm.cmd;
 
-import java.util.List;
+import java.io.IOException;
 import ua.mibal.javamm.code.fragment.ByteCode;
-import ua.mibal.javamm.code.fragment.SourceCode;
 import ua.mibal.javamm.compiler.Compiler;
 import ua.mibal.javamm.compiler.CompilerConfigurator;
+import ua.mibal.javamm.interpreter.Interpreter;
+import ua.mibal.javamm.interpreter.InterpreterConfigurator;
 
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
-public class JmmVmLauncher {
+public final class JmmVmLauncher {
 
-    public static void main(final String[] args) {
+    private JmmVmLauncher() {
+    }
+
+    public static void main(final String[] args) throws IOException {
         final Compiler compiler = new CompilerConfigurator().getCompiler();
-        final ByteCode byteCode = compiler.compile(new SourceCode() {
-            @Override
-            public String getModuleName() {
-                return "test";
-            }
-
-            @Override
-            public List<String> getLines() {
-                return List.of(
-                    "println ( 'HelloWorld' )",
-                    "",
-                    "println ( 'HelloJava' )"
-                );
-            }
-        });
-        System.out.println(byteCode.getCode());
+        final Interpreter interpreter = new InterpreterConfigurator().getInterpreter();
+        final ByteCode byteCode = compiler.compile(
+            new FileSourceCode("cmd/src/main/resources/test.javamm"));
+        interpreter.interpret(byteCode);
     }
 }
