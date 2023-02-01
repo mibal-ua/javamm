@@ -14,8 +14,8 @@
  * limitations under the License.
  *
  */
-package ua.mibal.javamm.vm;
 
+package ua.mibal.javamm.vm;
 
 import ua.mibal.javamm.code.fragment.SourceCode;
 import ua.mibal.javamm.compiler.JavammSyntaxError;
