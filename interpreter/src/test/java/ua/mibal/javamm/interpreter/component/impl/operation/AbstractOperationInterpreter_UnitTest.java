@@ -46,18 +46,18 @@ class AbstractOperationInterpreter_UnitTest {
     @Mock
     private Operation operation;
 
-    private AbstractOperationInterpreter operationInterpreter;
+    private AbstractOperationInterpreter<Operation> operationInterpreter;
 
     @BeforeEach
     void beforeEach(){
-        operationInterpreter = spy(new AbstractOperationInterpreter() {
+        operationInterpreter = spy(new AbstractOperationInterpreter<Operation>() {
             @Override
             protected void interpretOperation(final Operation operation) {
 
             }
 
             @Override
-            public Class getOperationClass() {
+            public Class<Operation> getOperationClass() {
                 return null;
             }
         });
