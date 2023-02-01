@@ -17,12 +17,11 @@
 
 package ua.mibal.javamm.cmd;
 
+import ua.mibal.javamm.compiler.JavammSyntaxError;
+import ua.mibal.javamm.interpreter.JavammRuntimeError;
+import ua.mibal.javamm.vm.VirtualMachine;
+import ua.mibal.javamm.vm.VirtualMachineBuilder;
 import java.io.IOException;
-import ua.mibal.javamm.code.fragment.ByteCode;
-import ua.mibal.javamm.compiler.Compiler;
-import ua.mibal.javamm.compiler.CompilerConfigurator;
-import ua.mibal.javamm.interpreter.Interpreter;
-import ua.mibal.javamm.interpreter.InterpreterConfigurator;
 
 /**
  * @author Michael Balakhon
@@ -34,10 +33,12 @@ public final class JmmVmLauncher {
     }
 
     public static void main(final String[] args) throws IOException {
-        final Compiler compiler = new CompilerConfigurator().getCompiler();
-        final Interpreter interpreter = new InterpreterConfigurator().getInterpreter();
-        final ByteCode byteCode = compiler.compile(
-            new FileSourceCode("cmd/src/main/resources/test.javamm"));
-        interpreter.interpret(byteCode);
+        final VirtualMachine virtualMachine = new VirtualMachineBuilder().build();
+        try {
+            virtualMachine.run(new FileSourceCode("cmd/src/main/resources/test.javamm"));
+        } catch (final JavammSyntaxError | JavammRuntimeError e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
+
