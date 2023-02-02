@@ -17,7 +17,6 @@
 
 package ua.mibal.javamm.compiler.component.impl;
 
-import java.util.List;
 import ua.mibal.javamm.code.fragment.ByteCode;
 import ua.mibal.javamm.code.fragment.SourceCode;
 import ua.mibal.javamm.code.fragment.SourceLine;
@@ -26,6 +25,7 @@ import ua.mibal.javamm.compiler.Compiler;
 import ua.mibal.javamm.compiler.JavammSyntaxError;
 import ua.mibal.javamm.compiler.component.BlockOperationReader;
 import ua.mibal.javamm.compiler.component.SourceLineReader;
+import java.util.List;
 
 /**
  * @author Michael Balakhon

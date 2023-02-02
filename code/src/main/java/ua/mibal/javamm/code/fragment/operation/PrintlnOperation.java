@@ -17,9 +17,9 @@
 
 package ua.mibal.javamm.code.fragment.operation;
 
-import static java.util.Objects.requireNonNull;
 import ua.mibal.javamm.code.fragment.Operation;
 import ua.mibal.javamm.code.fragment.SourceLine;
+import static java.util.Objects.requireNonNull;
 
 /**
  * @author Michael Balakhon
