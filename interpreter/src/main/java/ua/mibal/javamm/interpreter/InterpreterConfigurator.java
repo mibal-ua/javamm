@@ -17,12 +17,12 @@
 
 package ua.mibal.javamm.interpreter;
 
-import java.util.Set;
 import ua.mibal.javamm.interpreter.component.BlockOperationInterpreter;
 import ua.mibal.javamm.interpreter.component.OperationInterpreter;
 import ua.mibal.javamm.interpreter.component.impl.BlockOperationInterpreterImpl;
 import ua.mibal.javamm.interpreter.component.impl.InterpreterImpl;
 import ua.mibal.javamm.interpreter.component.impl.operation.simple.PrintlnOperationInterpreter;
+import java.util.Set;
 
 /**
  * @author Michael Balakhon
@@ -30,14 +30,14 @@ import ua.mibal.javamm.interpreter.component.impl.operation.simple.PrintlnOperat
  */
 public class InterpreterConfigurator {
 
-    private Set<OperationInterpreter<?>> operationInterpreters = Set.of(
+    private final Set<OperationInterpreter<?>> operationInterpreters = Set.of(
         new PrintlnOperationInterpreter()
     );
 
-    private BlockOperationInterpreter blockOperationInterpreter =
+    private final BlockOperationInterpreter blockOperationInterpreter =
         new BlockOperationInterpreterImpl(operationInterpreters);
 
-    private Interpreter interpreter = new InterpreterImpl(blockOperationInterpreter);
+    private final Interpreter interpreter = new InterpreterImpl(blockOperationInterpreter);
 
     public Interpreter getInterpreter() {
         return interpreter;
