@@ -17,7 +17,6 @@
 
 package ua.mibal.javamm.compiler;
 
-import java.util.Set;
 import ua.mibal.javamm.compiler.component.BlockOperationReader;
 import ua.mibal.javamm.compiler.component.OperationReader;
 import ua.mibal.javamm.compiler.component.SourceLineReader;
@@ -27,6 +26,7 @@ import ua.mibal.javamm.compiler.component.impl.CompilerImpl;
 import ua.mibal.javamm.compiler.component.impl.SourceLineReaderImpl;
 import ua.mibal.javamm.compiler.component.impl.TokenParserImpl;
 import ua.mibal.javamm.compiler.component.impl.operation.simple.PrintlnOperationReader;
+import java.util.Set;
 
 /**
  * @author Michael Balakhon
