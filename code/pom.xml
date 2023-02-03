@@ -36,6 +36,7 @@
                     <argLine>
                         @{argLine}
                         --add-opens javamm.code/ua.mibal.javamm.code.fragment.operation=ALL-UNNAMED
+                        --add-opens javamm.code/ua.mibal.javamm.code.fragment.expression=ALL-UNNAMED
                     </argLine>
                 </configuration>
             </plugin>
