@@ -15,13 +15,16 @@
  *
  */
 
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package ua.mibal.javamm.code.fragment.operation;
+
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import ua.mibal.javamm.code.fragment.SourceLine;
-import ua.mibal.javamm.code.fragment.operation.AbstractOperation;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Michael Balakhon
