@@ -33,6 +33,6 @@ public final class PrintlnOperationInterpreter extends AbstractOperationInterpre
 
     @Override
     protected void interpretOperation(final PrintlnOperation operation) {
-        System.out.println(operation.getText());
+        System.out.println(operation.getExpression());
     }
 }

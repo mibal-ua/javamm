@@ -17,19 +17,30 @@
 
 package ua.mibal.javamm.compiler.component.impl.operation.simple;
 
-import java.util.ListIterator;
-import java.util.Optional;
+import ua.mibal.javamm.code.fragment.Expression;
 import ua.mibal.javamm.code.fragment.SourceLine;
 import ua.mibal.javamm.code.fragment.operation.PrintlnOperation;
+import ua.mibal.javamm.compiler.component.ExpressionResolver;
 import ua.mibal.javamm.compiler.component.OperationReader;
 import ua.mibal.javamm.compiler.component.impl.error.JavammLineSyntaxError;
 import ua.mibal.javamm.compiler.component.impl.operation.AbstractOperationReader;
+
+import java.util.ListIterator;
+import java.util.Optional;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
 public class PrintlnOperationReader extends AbstractOperationReader<PrintlnOperation> implements OperationReader {
+
+    private final ExpressionResolver expressionResolver;
+
+    public PrintlnOperationReader(final ExpressionResolver expressionResolver) {
+        this.expressionResolver = requireNonNull(expressionResolver);
+    }
 
     @Override
     protected Optional<String> getOperationKeyword() {
@@ -48,7 +59,8 @@ public class PrintlnOperationReader extends AbstractOperationReader<PrintlnOpera
 
     @Override
     protected PrintlnOperation get(final SourceLine sourceLine, final ListIterator<SourceLine> iterator) {
-        final String text = sourceLine.getToken(2); // println(${text})
-        return new PrintlnOperation(sourceLine, text);
+        final Expression expression = expressionResolver.resolve(// println ( 'text' )
+                sourceLine.subList(2, sourceLine.getTokenCount() - 1), sourceLine);
+        return new PrintlnOperation(sourceLine, expression);
     }
 }

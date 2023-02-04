@@ -17,8 +17,10 @@
 
 package ua.mibal.javamm.code.fragment.operation;
 
+import ua.mibal.javamm.code.fragment.Expression;
 import ua.mibal.javamm.code.fragment.Operation;
 import ua.mibal.javamm.code.fragment.SourceLine;
+
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -27,14 +29,14 @@ import static java.util.Objects.requireNonNull;
  */
 public final class PrintlnOperation extends AbstractOperation implements Operation {
 
-    private final String text;
+    private final Expression expression;
 
-    public PrintlnOperation(final SourceLine sourceLine, final String text) {
+    public PrintlnOperation(final SourceLine sourceLine, final Expression expression) {
         super(sourceLine);
-        this.text = requireNonNull(text);
+        this.expression = requireNonNull(expression);
     }
 
-    public String getText() {
-        return text;
+    public Expression getExpression() {
+        return expression;
     }
 }
