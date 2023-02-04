@@ -18,14 +18,20 @@
 package ua.mibal.javamm.compiler;
 
 import ua.mibal.javamm.compiler.component.BlockOperationReader;
+import ua.mibal.javamm.compiler.component.ExpressionBuilder;
+import ua.mibal.javamm.compiler.component.ExpressionResolver;
 import ua.mibal.javamm.compiler.component.OperationReader;
+import ua.mibal.javamm.compiler.component.SingleTokenExpressionBuilder;
 import ua.mibal.javamm.compiler.component.SourceLineReader;
 import ua.mibal.javamm.compiler.component.TokenParser;
 import ua.mibal.javamm.compiler.component.impl.BlockOperationReaderImpl;
 import ua.mibal.javamm.compiler.component.impl.CompilerImpl;
+import ua.mibal.javamm.compiler.component.impl.ExpressionResolverImpl;
+import ua.mibal.javamm.compiler.component.impl.SingleTokenExpressionBuilderImpl;
 import ua.mibal.javamm.compiler.component.impl.SourceLineReaderImpl;
 import ua.mibal.javamm.compiler.component.impl.TokenParserImpl;
 import ua.mibal.javamm.compiler.component.impl.operation.simple.PrintlnOperationReader;
+
 import java.util.Set;
 
 /**
@@ -38,8 +44,16 @@ public class CompilerConfigurator {
 
     private final SourceLineReader sourceLineReader = new SourceLineReaderImpl(tokenParser);
 
+    private final SingleTokenExpressionBuilder singleTokenExpressionBuilder = new SingleTokenExpressionBuilderImpl();
+
+    private final Set<ExpressionBuilder> expressionBuilders = Set.of(
+            singleTokenExpressionBuilder
+    );
+
+    private final ExpressionResolver expressionResolver = new ExpressionResolverImpl(expressionBuilders);
+
     private final Set<OperationReader> operationReaders = Set.of(
-        new PrintlnOperationReader()
+            new PrintlnOperationReader(expressionResolver)
     );
 
     private final BlockOperationReader blockOperationReader = new BlockOperationReaderImpl(operationReaders);
