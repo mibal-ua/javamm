@@ -95,11 +95,10 @@ public class SingleTokenExpressionBuilderImpl implements SingleTokenExpressionBu
                 throw new JavammLineSyntaxError(
                         format("%s expected at the end of the string token instead of %s",
                                 stringDelimiter, last), sourceLine);
-            } else {
-                throw new JavammLineSyntaxError(
-                        format("%s expected at the end of the string token",
-                                stringDelimiter), sourceLine);
             }
+            throw new JavammLineSyntaxError(
+                    format("%s expected at the end of the string token",
+                            stringDelimiter), sourceLine);
         }
         return ConstantExpression.valueOf(token.substring(1, token.length() - 1));
     }
