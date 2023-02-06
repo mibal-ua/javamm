@@ -17,13 +17,6 @@
 
 package ua.mibal.javamm.interpreter.component.impl.operation;
 
-import static java.lang.Thread.currentThread;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -32,8 +25,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ua.mibal.javamm.code.component.ExpressionContext;
 import ua.mibal.javamm.code.fragment.Operation;
 import ua.mibal.javamm.interpreter.TerminateInterpreterException;
+
+import static java.lang.Thread.currentThread;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
 /**
  * @author Michael Balakhon
@@ -46,11 +48,14 @@ class AbstractOperationInterpreter_UnitTest {
     @Mock
     private Operation operation;
 
+    @Mock
+    private ExpressionContext expressionContext;
+
     private AbstractOperationInterpreter<Operation> operationInterpreter;
 
     @BeforeEach
     void beforeEach(){
-        operationInterpreter = spy(new AbstractOperationInterpreter<Operation>() {
+        operationInterpreter = spy(new AbstractOperationInterpreter<Operation>(expressionContext) {
             @Override
             protected void interpretOperation(final Operation operation) {
 

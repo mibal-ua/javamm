@@ -17,6 +17,7 @@
 
 package ua.mibal.javamm.interpreter.component.impl.operation.simple;
 
+import ua.mibal.javamm.code.component.ExpressionContext;
 import ua.mibal.javamm.code.fragment.operation.PrintlnOperation;
 import ua.mibal.javamm.interpreter.component.impl.operation.AbstractOperationInterpreter;
 
@@ -26,6 +27,10 @@ import ua.mibal.javamm.interpreter.component.impl.operation.AbstractOperationInt
  */
 public final class PrintlnOperationInterpreter extends AbstractOperationInterpreter<PrintlnOperation> {
 
+    public PrintlnOperationInterpreter(final ExpressionContext expressionContext) {
+        super(expressionContext);
+    }
+
     @Override
     public Class<PrintlnOperation> getOperationClass() {
         return PrintlnOperation.class;
@@ -33,6 +38,6 @@ public final class PrintlnOperationInterpreter extends AbstractOperationInterpre
 
     @Override
     protected void interpretOperation(final PrintlnOperation operation) {
-        System.out.println(operation.getExpression());
+        System.out.println(operation.getExpression().getValue(expressionContext));
     }
 }

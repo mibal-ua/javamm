@@ -17,11 +17,16 @@
 
 package ua.mibal.javamm.interpreter;
 
+import ua.mibal.javamm.code.component.ExpressionContext;
 import ua.mibal.javamm.interpreter.component.BlockOperationInterpreter;
+import ua.mibal.javamm.interpreter.component.ExpressionEvaluator;
+import ua.mibal.javamm.interpreter.component.ExpressionUpdater;
 import ua.mibal.javamm.interpreter.component.OperationInterpreter;
 import ua.mibal.javamm.interpreter.component.impl.BlockOperationInterpreterImpl;
+import ua.mibal.javamm.interpreter.component.impl.ExpressionContextImpl;
 import ua.mibal.javamm.interpreter.component.impl.InterpreterImpl;
 import ua.mibal.javamm.interpreter.component.impl.operation.simple.PrintlnOperationInterpreter;
+
 import java.util.Set;
 
 /**
@@ -30,8 +35,19 @@ import java.util.Set;
  */
 public class InterpreterConfigurator {
 
+    private final Set<ExpressionEvaluator<?>> expressionEvaluators = Set.of(
+            //TODO Add here
+    );
+
+    private final Set<ExpressionUpdater<?>> expressionUpdaters = Set.of(
+            //TODO Add here
+    );
+
+    private final ExpressionContext expressionContext =
+            new ExpressionContextImpl(expressionEvaluators, expressionUpdaters);
+
     private final Set<OperationInterpreter<?>> operationInterpreters = Set.of(
-        new PrintlnOperationInterpreter()
+        new PrintlnOperationInterpreter(expressionContext)
     );
 
     private final BlockOperationInterpreter blockOperationInterpreter =

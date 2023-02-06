@@ -17,15 +17,24 @@
 
 package ua.mibal.javamm.interpreter.component.impl.operation;
 
+import ua.mibal.javamm.code.component.ExpressionContext;
 import ua.mibal.javamm.code.fragment.Operation;
 import ua.mibal.javamm.interpreter.TerminateInterpreterException;
 import ua.mibal.javamm.interpreter.component.OperationInterpreter;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
 public abstract class AbstractOperationInterpreter<T extends Operation> implements OperationInterpreter<T> {
+
+    protected final ExpressionContext expressionContext;
+
+    public AbstractOperationInterpreter(final ExpressionContext expressionContext) {
+        this.expressionContext = requireNonNull(expressionContext);
+    }
 
     @Override
     public final void interpret(final T operation) {
