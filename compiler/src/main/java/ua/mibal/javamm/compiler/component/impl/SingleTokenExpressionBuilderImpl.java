@@ -75,7 +75,7 @@ public class SingleTokenExpressionBuilderImpl implements SingleTokenExpressionBu
                     expression = ConstantExpression.valueOf(Double.parseDouble(value));
                 } catch (final NumberFormatException doubleFormatException) {
                     // FIXME
-                    throw new JavammLineSyntaxError("Invalid constant: " + value, sourceLine);
+                    throw new JavammLineSyntaxError(format("Invalid constant: '%s'", value), sourceLine);
                 }
             }
         }

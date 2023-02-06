@@ -27,6 +27,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import static java.lang.String.format;
 import static java.lang.String.join;
 
 /**
@@ -49,7 +50,9 @@ public final class ExpressionResolverImpl implements ExpressionResolver {
             }
         }
         // FIXME Can be complex expression
-        throw new JavammLineSyntaxError("Unsupported expression: " + join("", expressionTokens), sourceLine);
+        throw new JavammLineSyntaxError(format(
+                "Unsupported expression: '%s'", join(" ", expressionTokens)
+        ), sourceLine);
     }
 
     /*

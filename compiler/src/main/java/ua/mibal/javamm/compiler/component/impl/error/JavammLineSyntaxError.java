@@ -17,10 +17,11 @@
 
 package ua.mibal.javamm.compiler.component.impl.error;
 
-import static java.lang.String.format;
-import static java.util.Objects.requireNonNull;
 import ua.mibal.javamm.code.fragment.SourceLine;
 import ua.mibal.javamm.compiler.JavammSyntaxError;
+
+import static java.lang.String.format;
+import static java.util.Objects.requireNonNull;
 
 
 /**
@@ -31,7 +32,7 @@ public class JavammLineSyntaxError extends JavammSyntaxError {
 
     public JavammLineSyntaxError(final String message,
                                  final SourceLine sourceLine) {
-        super(format("Syntax error in '%s [Line: %s]: %s",
+        super(format("Syntax error in '%s' [Line: %s]: %s",
             sourceLine.getModuleName(), sourceLine.getNumber(), requireNonNull(message)));
     }
 }
