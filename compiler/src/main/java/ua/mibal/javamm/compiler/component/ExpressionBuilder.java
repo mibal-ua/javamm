@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * @author Mykhailo Balakhon
- * @link <a href=https://t.me/mibal_ua>t.me/mibal_ua</a>
+ * @link https://t.me/mibal_ua
  */
 public interface ExpressionBuilder {
 

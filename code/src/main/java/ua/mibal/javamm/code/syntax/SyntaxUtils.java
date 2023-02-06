@@ -26,7 +26,7 @@ import static ua.mibal.javamm.code.syntax.Delimiters.STRING_DELIMITERS;
 
 /**
  * @author Mykhailo Balakhon
- * @link <a href=https://t.me/mibal_ua>t.me/mibal_ua</a>
+ * @link t.me/mibal_ua
  */
 public final class SyntaxUtils {
 
