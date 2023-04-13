@@ -9,4 +9,5 @@ module javamm.code {
     exports ua.mibal.javamm.code.fragment.expression;
     exports ua.mibal.javamm.code.syntax;
     exports ua.mibal.javamm.code.component;
+    exports ua.mibal.javamm.code;
 }

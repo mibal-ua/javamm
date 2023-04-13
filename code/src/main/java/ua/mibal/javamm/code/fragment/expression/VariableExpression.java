@@ -15,17 +15,31 @@
  *
  */
 
-package ua.mibal.javamm.code.fragment;
+package ua.mibal.javamm.code.fragment.expression;
 
-import ua.mibal.javamm.code.component.ExpressionContext;
+import ua.mibal.javamm.code.Variable;
+import ua.mibal.javamm.code.fragment.UpdatableExpression;
+
+import static java.util.Objects.requireNonNull;
 
 /**
- * @author Michael Balakhon
- * @link t.me/mibal_ua.
+ * @author Mykhailo Balakhon
+ * @link t.me/mibal_ua
  */
-public interface UpdatableExpression extends Expression {
+public class VariableExpression implements UpdatableExpression {
 
-    default void setValue(final ExpressionContext expressionContext, final Object updatedValue) {
-        expressionContext.setValue(this, updatedValue);
+    private final Variable variable;
+
+    public VariableExpression(final Variable variable) {
+        this.variable = requireNonNull(variable);
+    }
+
+    public final Variable getVariable() {
+        return variable;
+    }
+
+    @Override
+    public String toString() {
+        return variable.toString();
     }
 }

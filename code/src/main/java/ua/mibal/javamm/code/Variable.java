@@ -15,17 +15,15 @@
  *
  */
 
-package ua.mibal.javamm.code.fragment;
+package ua.mibal.javamm.code;
 
-import ua.mibal.javamm.code.component.ExpressionContext;
+import ua.mibal.javamm.code.fragment.CompiledCodeFragment;
 
 /**
- * @author Michael Balakhon
- * @link t.me/mibal_ua.
+ * @author Mykhailo Balakhon
+ * @link t.me/mibal_ua
  */
-public interface UpdatableExpression extends Expression {
+public interface Variable extends Comparable<Variable>, CompiledCodeFragment {
 
-    default void setValue(final ExpressionContext expressionContext, final Object updatedValue) {
-        expressionContext.setValue(this, updatedValue);
-    }
+    String getName();
 }

@@ -17,18 +17,22 @@
 
 package ua.mibal.javamm.compiler.component.impl;
 
+import ua.mibal.javamm.code.Variable;
 import ua.mibal.javamm.code.fragment.Expression;
 import ua.mibal.javamm.code.fragment.SourceLine;
 import ua.mibal.javamm.code.fragment.expression.ConstantExpression;
 import ua.mibal.javamm.code.fragment.expression.NullValueExpression;
 import ua.mibal.javamm.code.fragment.expression.TypeExpression;
+import ua.mibal.javamm.code.fragment.expression.VariableExpression;
 import ua.mibal.javamm.code.syntax.Keywords;
 import ua.mibal.javamm.compiler.component.SingleTokenExpressionBuilder;
+import ua.mibal.javamm.compiler.component.VariableBuilder;
 import ua.mibal.javamm.compiler.component.impl.error.JavammLineSyntaxError;
 
 import java.util.List;
 
 import static java.lang.String.format;
+import static java.util.Objects.requireNonNull;
 import static ua.mibal.javamm.code.syntax.Delimiters.SIGNIFICANT_TOKEN_DELIMITERS;
 import static ua.mibal.javamm.code.syntax.Delimiters.STRING_DELIMITERS;
 import static ua.mibal.javamm.code.syntax.SyntaxUtils.isValidSyntaxToken;
@@ -38,6 +42,12 @@ import static ua.mibal.javamm.code.syntax.SyntaxUtils.isValidSyntaxToken;
  * @link https://t.me/mibal_ua
  */
 public class SingleTokenExpressionBuilderImpl implements SingleTokenExpressionBuilder {
+
+    private final VariableBuilder variableBuilder;
+
+    public SingleTokenExpressionBuilderImpl(final VariableBuilder variableBuilder) {
+        this.variableBuilder = requireNonNull(variableBuilder);
+    }
 
     @Override
     public boolean canBuild(final List<String> tokens) {
@@ -74,8 +84,8 @@ public class SingleTokenExpressionBuilderImpl implements SingleTokenExpressionBu
                 try {
                     expression = ConstantExpression.valueOf(Double.parseDouble(value));
                 } catch (final NumberFormatException doubleFormatException) {
-                    // FIXME
-                    throw new JavammLineSyntaxError(format("Invalid constant: '%s'", value), sourceLine);
+                    final Variable variable = variableBuilder.build(value, sourceLine);
+                    expression = new VariableExpression(variable);
                 }
             }
         }

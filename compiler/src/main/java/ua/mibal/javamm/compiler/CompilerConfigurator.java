@@ -24,13 +24,16 @@ import ua.mibal.javamm.compiler.component.OperationReader;
 import ua.mibal.javamm.compiler.component.SingleTokenExpressionBuilder;
 import ua.mibal.javamm.compiler.component.SourceLineReader;
 import ua.mibal.javamm.compiler.component.TokenParser;
+import ua.mibal.javamm.compiler.component.VariableBuilder;
 import ua.mibal.javamm.compiler.component.impl.BlockOperationReaderImpl;
 import ua.mibal.javamm.compiler.component.impl.CompilerImpl;
 import ua.mibal.javamm.compiler.component.impl.ExpressionResolverImpl;
 import ua.mibal.javamm.compiler.component.impl.SingleTokenExpressionBuilderImpl;
 import ua.mibal.javamm.compiler.component.impl.SourceLineReaderImpl;
 import ua.mibal.javamm.compiler.component.impl.TokenParserImpl;
+import ua.mibal.javamm.compiler.component.impl.VariableBuilderImpl;
 import ua.mibal.javamm.compiler.component.impl.operation.simple.PrintlnOperationReader;
+import ua.mibal.javamm.compiler.component.impl.operation.simple.VariableDeclarationOperationReader;
 
 import java.util.Set;
 
@@ -44,7 +47,10 @@ public class CompilerConfigurator {
 
     private final SourceLineReader sourceLineReader = new SourceLineReaderImpl(tokenParser);
 
-    private final SingleTokenExpressionBuilder singleTokenExpressionBuilder = new SingleTokenExpressionBuilderImpl();
+    private final VariableBuilder variableBuilder = new VariableBuilderImpl();
+
+    private final SingleTokenExpressionBuilder singleTokenExpressionBuilder =
+            new SingleTokenExpressionBuilderImpl(variableBuilder);
 
     private final Set<ExpressionBuilder> expressionBuilders = Set.of(
             singleTokenExpressionBuilder
@@ -53,7 +59,8 @@ public class CompilerConfigurator {
     private final ExpressionResolver expressionResolver = new ExpressionResolverImpl(expressionBuilders);
 
     private final Set<OperationReader> operationReaders = Set.of(
-            new PrintlnOperationReader(expressionResolver)
+            new PrintlnOperationReader(expressionResolver),
+            new VariableDeclarationOperationReader(variableBuilder, expressionResolver)
     );
 
     private final BlockOperationReader blockOperationReader = new BlockOperationReaderImpl(operationReaders);

@@ -15,17 +15,18 @@
  *
  */
 
-package ua.mibal.javamm.code.fragment;
+package ua.mibal.javamm.compiler.component;
 
-import ua.mibal.javamm.code.component.ExpressionContext;
+import ua.mibal.javamm.code.Variable;
+import ua.mibal.javamm.code.fragment.SourceLine;
 
 /**
- * @author Michael Balakhon
- * @link t.me/mibal_ua.
+ * @author Mykhailo Balakhon
+ * @link t.me/mibal_ua
  */
-public interface UpdatableExpression extends Expression {
+public interface VariableBuilder {
 
-    default void setValue(final ExpressionContext expressionContext, final Object updatedValue) {
-        expressionContext.setValue(this, updatedValue);
-    }
+    boolean isValid(String name);
+
+    Variable build(String name, SourceLine sourceLine);
 }
